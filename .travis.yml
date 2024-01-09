@@ -1,12 +1,12 @@
+---
 os: linux
 dist: focal
 language: shell
-env: 
+env:
   global:
-   # - FOO=a
     - BAR=B
 install: skip
-script: echo "condition without regex"
-jobs: 
-  include: 
-   if: env(RUN_TESTING) = true
+jobs:
+  include:
+    script: echo "condition without regex"
+    if: env(RUN_TESTING) = true
