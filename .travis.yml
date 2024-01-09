@@ -19,4 +19,4 @@ jobs:
       if: env(BAR) =~ /^(?i)(bar|1).*/
     - name: "condition-without-regex"
       script: echo "condition without regex"
-      if: env(BAR) =~ [ABC]
+      if: env(RUN_TESTING) = true
