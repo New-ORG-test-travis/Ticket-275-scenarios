@@ -7,6 +7,11 @@ env:
 install: skip
 script: sleep 1
 
-jobs: 
-  include: 
-    - if: env(RUN_TESTING) = true
+jobs:
+  include:
+    - name "condition with regex"
+      script: echo "condition with regex"
+      if: env(RUN_TESTING) =~ /^(?i)(true|1).*/
+    - name "condition without regex"
+      script: echo "condition without regex"
+      if: env(RUN_TESTING) = true
