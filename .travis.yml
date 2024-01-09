@@ -6,7 +6,7 @@ env:
    # - FOO=a
     - BAR=B
 install: skip
-script: 
+script: echo "condition without regex"
 jobs: 
   include: 
    if: env(RUN_TESTING) = true
