@@ -1,4 +1,3 @@
----
 os: linux
 dist: focal
 language: shell
@@ -6,7 +5,13 @@ env:
   global:
     - BAR=B
 install: skip
-jobs:
-  include:
-    script: echo "condition without regex"
-    if: env(RUN_TESTING) = true
+script: sleep 1
+
+jobs: 
+  include: 
+    - if: env(FOO) =~ [abc] and env(BAR) =~ [ABC]
+    - if: env(FOO) =~ [abc] or env(BAR) =~ [ABC]
+    - if: env(FOO) =~ [ABC]
+    - if: env(BAR) =~ [abc]
+    - if: env(FOO) =~ [ABC] and env(BAR) =~ [ABC]
+    - if: env(FOO) =~ [abc] or env(BAR) =~ [abc]
