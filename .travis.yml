@@ -3,15 +3,16 @@ dist: focal
 language: shell
 env:
   global:
-    - BAR=B
-install: skip
-script: sleep 1
-
+    - BAR=bar
+addons:
+  apt:
+    packages:
+      - ca-certificates
 jobs:
   include:
-    - name "condition with regex"
+    - name: condition with regex
       script: echo "condition with regex"
       if: env(RUN_TESTING) =~ /^(?i)(true|1).*/
-    - name "condition without regex"
+    - name: condition without regex
       script: echo "condition without regex"
       if: env(RUN_TESTING) = true
